@@ -1,0 +1,32 @@
+{
+  "name": "pi-history",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pi extension — /history slash command to browse and resume past sessions for the current project with rich previews.",
+  "keywords": [
+    "pi-package"
+  ],
+  "license": "MIT",
+  "author": "Zoych",
+  "pi": {
+    "extensions": [
+      "./extensions"
+    ]
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.79.6",
+    "@earendil-works/pi-tui": "^0.79.6",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=0.79.0",
+    "@earendil-works/pi-tui": ">=0.79.0"
+  }
+}
