@@ -1,3 +1,5 @@
+import * as path from "node:path";
+
 import type { ExtensionAPI, ExtensionCommandContext } from "@earendil-works/pi-coding-agent";
 import { SessionManager, getSelectListTheme } from "@earendil-works/pi-coding-agent";
 import { SelectList, type SelectItem } from "@earendil-works/pi-tui";
@@ -37,7 +39,8 @@ async function historyCommand(_args: string, ctx: ExtensionCommandContext): Prom
     const currentPath = ctx.sessionManager.getSessionFile();
 
     // 1. List all sessions for this project
-    const sessions = await SessionManager.list(ctx.cwd);
+    const sessionDir = path.join(ctx.cwd, ".pi", "sessions");
+    const sessions = await SessionManager.list(ctx.cwd, sessionDir);
     if (sessions.length === 0) {
       ctx.ui.notify("No sessions found for this project", "info");
       return;
