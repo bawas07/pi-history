@@ -2,7 +2,7 @@ import * as path from "node:path";
 
 import type { ExtensionAPI, ExtensionCommandContext } from "@earendil-works/pi-coding-agent";
 import { SessionManager, getSelectListTheme } from "@earendil-works/pi-coding-agent";
-import { SelectList, type SelectItem } from "@earendil-works/pi-tui";
+import { Box, SelectList, type SelectItem } from "@earendil-works/pi-tui";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -92,7 +92,10 @@ async function historyCommand(_args: string, ctx: ExtensionCommandContext): Prom
           done(undefined);
         };
 
-        return list;
+        // Wrap in a Box to add visual boundary between the picker and chat
+        const box = new Box(2, 1);
+        box.addChild(list);
+        return box;
       },
       { overlay: true },
     );
